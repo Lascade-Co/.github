@@ -1,0 +1,83 @@
+name: "Android bug report"
+description: "Report a bug in an Android app"
+title: "[Android Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please provide enough detail to reproduce and investigate the issue.
+
+        **Exported app data:** Include it for all bugs other than purely UI/visual issues.
+        For purely UI/visual bugs, you may leave that upload empty.
+        Before attaching app data, check for personal information, access tokens,
+        credentials, or other sensitive data and remove them.
+
+  - type: dropdown
+    id: bug-category
+    attributes:
+      label: Bug category
+      description: "Choose UI-only only if the issue is purely visual and does not affect functionality."
+      options:
+        - "UI / visual only"
+        - "Functional / crash / performance / other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: "What happened, and what did you expect to happen?"
+      placeholder: |
+        Actual behavior:
+        Expected behavior:
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to reproduce
+      description: "List the steps needed to trigger the bug. If you cannot reproduce it consistently, describe when you saw it."
+      placeholder: |
+        1. Open the app...
+        2. Navigate to...
+        3. Tap...
+        4. Observe...
+    validations:
+      required: true
+
+  - type: upload
+    id: video-images
+    attributes:
+      label: Video / images
+      description: "Attach a screen recording or screenshots showing the bug, if available."
+    validations:
+      required: false
+      accept: ".png,.jpg,.jpeg,.gif,.webp,.mp4,.mov,.webm"
+
+  - type: input
+    id: device
+    attributes:
+      label: Device used
+      description: "Include the device model and Android version."
+      placeholder: "e.g., Google Pixel 8, Android 15"
+    validations:
+      required: true
+
+  - type: input
+    id: build-commit
+    attributes:
+      label: Build commit
+      description: "Find and copy this from Settings → Debug options → Build commit."
+      placeholder: "Paste the build commit hash"
+    validations:
+      required: true
+
+  - type: upload
+    id: exported-app-data
+    attributes:
+      label: Exported app data
+      description: "Required for non-UI bugs; not required for purely UI/visual bugs. Export via Settings → Manage data → Export app data. Upload the exported archive (ZIP it first if the file type is unsupported), after removing any sensitive data."
+    validations:
+      required: false
